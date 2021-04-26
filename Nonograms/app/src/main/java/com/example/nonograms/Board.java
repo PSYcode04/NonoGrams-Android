@@ -35,11 +35,6 @@ public class Board extends Fragment {
     GridView gridView;
     BoardViewAdapter adapter;
 
-    // TEST
-    BoardViewAdapterEx adapterEx;
-    Button button;
-    ImageView answerImg;
-
 
     Thread t1;
 
@@ -54,17 +49,6 @@ public class Board extends Fragment {
 
         gridView = (GridView) rootView.findViewById(R.id.gridView);
 
-        button = (Button) rootView.findViewById(R.id.button);
-        answerImg = (ImageView) rootView.findViewById(R.id.imageView);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                adapterEx = new BoardViewAdapterEx(getContext(), answer, newBoard.getRowMax()+20, newBoard.getColMax()+20);
-                gridView.setAdapter(adapterEx);
-                gridView.setNumColumns(newBoard.getRowMax()+20);
-            }
-        });
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -113,11 +97,6 @@ public class Board extends Fragment {
             public void run() {
                 newBitmap = grayScale(newBitmap);
                 splitImage(newBitmap);
-                answerImg.post(new Runnable(){
-                    public void run(){
-                        answerImg.setImageBitmap(newBitmap);
-                    }
-                });
             }
         });
 

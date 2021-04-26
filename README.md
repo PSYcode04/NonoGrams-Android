@@ -28,9 +28,10 @@
 
 ### 2. 보드판 생성 (검색)
 
-![image](https://user-images.githubusercontent.com/71871348/116051560-b15dbf80-a6b3-11eb-92cc-70bd6ddc1f46.png)
-
+![image](https://user-images.githubusercontent.com/71871348/116056671-0223e700-a6b9-11eb-991a-a5392507c745.png)
 - __cat__ 을 입력하고 __SEARCH__ 버튼을 클릭하면, 검색한 이미지를 정사각형 형태로 크기를 조절하고 흑백 이미지로 변경한다.
+
+![image](https://user-images.githubusercontent.com/71871348/116051560-b15dbf80-a6b3-11eb-92cc-70bd6ddc1f46.png)
 - 변경한 이미지를 이용해서 20×20 짜리 Nono Board를 생성한다.
 
 ### 3. Click nonogram item

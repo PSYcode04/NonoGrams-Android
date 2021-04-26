@@ -1,0 +1,96 @@
+package com.example.nonograms;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+public class BoardViewAdapterEx extends BaseAdapter {
+
+    private Context c;
+    private int[][] nonoBoard;
+    private int boardRow;
+    private int boardCol;
+    private int addCol; // 추가된 열 부분
+    private int addRow; // 추가된 행 부분
+    private Bitmap bitmap;  // nonogram tile
+    private int[] boardArray;
+
+    public BoardViewAdapterEx(Context context, int[] arr, int row, int col) {
+        c = context;
+//        nonoBoard = copyArray(finalBoard, col, row);
+//        nonoBoard = finalBoard;
+        boardRow = row;
+        boardCol = col;
+        addCol = col-20;
+        addRow = row - 20;
+
+//        bitmap.createBitmap(10,10,Bitmap.Config.ARGB_8888);
+//        bitmap.setPixel(0, 0, Color.argb(255,255,255,255));
+        boardArray = arr;
+    }
+
+
+
+    @Override
+    public int getCount() {
+        return boardRow * boardCol;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        TextView textView;
+
+
+        if(convertView == null) {
+            textView = new TextView(c);
+            textView.setPadding(0,0,0,0);
+            textView.setSingleLine();
+            textView.setTextSize(10);
+
+        } else {
+            textView = (TextView) convertView;
+        }
+
+
+
+        if(boardArray[position] == -2){
+            textView.setText(" ");
+            return textView;
+        }
+
+        // 보드 부분
+        if(boardArray[position] == 0 || boardArray[position] == -1){
+            textView.setText(String.valueOf(boardArray[position]));
+            textView.setBackgroundColor(Color.WHITE);
+            return textView;
+        }
+
+        // 정답 클릭한 부분
+        if(boardArray[position] == -3) {
+            textView.setText(" ");
+            textView.setBackgroundColor(Color.BLACK);
+            return textView;
+        }
+
+
+        textView.setText(String.valueOf(boardArray[position]));
+        textView.setSingleLine();
+
+        return textView;
+    }
+
+}
